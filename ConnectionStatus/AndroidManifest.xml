@@ -8,10 +8,14 @@
         android:minSdkVersion="19"
         android:targetSdkVersion="19" />
 
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
+        android:logo="@drawable/ic_launcher"
         android:theme="@style/AppTheme" >
         <activity
             android:name=".MainActivity"
@@ -22,6 +26,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver
+            android:name="ConnectionChangeBroadcastReceiver"
+            android:description="@string/ConnectionChangeReceiverDescription"
+            android:enabled="true"
+            android:icon="@drawable/ic_launcher"
+            android:label="@string/ConnectionChangeReceiverLabel"
+            android:logo="@drawable/ic_launcher" >
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">ConnectionStatus</string>
+    <string name="app_name">Connection Status</string>
     <string name="title_section1">Section 1</string>
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="fragment_title">Connection Status App</string>
+    <string name="fragment2_title">Active Network Details</string>
+    <string name="unknown">unknown</string><string name="NetworkStateLabel">Network State:</string>
+    
+    <string name="NetworkTypeLabel">Network Type:</string>
+    <string name="NetworkType_Value_WiFi">WiFi</string>
+    <string name="NetworkType_Value_Mobile">Mobile</string>
+    <string name="NetworkIdentifiers">Network Identifiers</string>
+    <string name="NetworkName">NetworkName:</string>
 
+    <string name="ConnectionChangeReceiverDescription">Used to receive broadcasts when the connection changes.</string>
+    <string name="ConnectionChangeReceiverLabel">Connection Change Receiver</string>
 </resources>
