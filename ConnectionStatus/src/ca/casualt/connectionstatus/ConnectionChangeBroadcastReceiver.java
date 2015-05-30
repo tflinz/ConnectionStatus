@@ -2,12 +2,14 @@ package ca.casualt.connectionstatus;
 
 import android.app.Notification;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationCompat.Builder;
 import android.util.Log;
@@ -62,13 +64,22 @@ public final class ConnectionChangeBroadcastReceiver extends BroadcastReceiver {
 
     public static void doNotification(Context context) {
         Builder builder = new NotificationCompat.Builder(context);
+        PendingIntent clickIntent = getLaunchWifiSettingsIntent(context);
         builder.setSmallIcon(smartSelectIcon(context)).setContentTitle("Current Connection")
-                .setContentText(getCleanNetName(context)).setOngoing(true);
+                .setContentText(getCleanNetName(context)).setOngoing(true)
+                .setContentIntent(clickIntent);
         Notification notification = builder.build();
 
         NotificationManager mNotificationManager = (NotificationManager) context
                 .getSystemService(Context.NOTIFICATION_SERVICE);
         mNotificationManager.notify(NOTIFICATION_ID, notification);
+    }
+
+    private static PendingIntent getLaunchWifiSettingsIntent(Context context) {
+        Intent intent = new Intent(Settings.ACTION_WIFI_SETTINGS);
+        PendingIntent clickIntent = PendingIntent.getActivity(context, 0, intent,
+                PendingIntent.FLAG_UPDATE_CURRENT);
+        return clickIntent;
     }
 
     private static int smartSelectIcon(Context context) {

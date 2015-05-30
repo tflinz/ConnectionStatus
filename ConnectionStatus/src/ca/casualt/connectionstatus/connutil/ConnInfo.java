@@ -6,6 +6,7 @@ import android.net.NetworkInfo;
 import android.net.NetworkInfo.State;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import android.telephony.TelephonyManager;
 import ca.casualt.connectionstatus.R;
 
 /**
@@ -106,6 +107,10 @@ public final class ConnInfo {
                     }
                     break;
                 case ConnectivityManager.TYPE_MOBILE:
+                    final TelephonyManager telManager = (TelephonyManager) context
+                            .getSystemService(Context.TELEPHONY_SERVICE);
+                    toReturn = telManager.getNetworkOperatorName();
+                    break;
                 default:
                     // Unknown/unhandled case
                     break;
